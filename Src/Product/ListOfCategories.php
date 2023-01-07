@@ -1,5 +1,4 @@
 <?php
-
 include("../Base.php");
 
 $result = $conn->query("SELECT * FROM Category");
