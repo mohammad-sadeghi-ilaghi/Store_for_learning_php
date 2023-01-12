@@ -11,6 +11,7 @@ if($result->fetch_array() == null){
 }
 else {
     setcookie("Authorization", "true", time() + (20 * 60), "/");
+    setcookie("AuthorizationUser", strval($result->), time() + (20 * 60), "/");
     header("Location: ../../View/Home/Home.html");
 }
 

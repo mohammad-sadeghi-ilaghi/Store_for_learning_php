@@ -11,7 +11,8 @@ if(count($product) == 0){
 }
 $result = $conn->query("UPDATE Product Set Price = {$product['Price']},
                                            Name = {$product['Name']}, 
-                                           CategoryId = {$product['Category']}
+                                           CategoryId = {$product['Category']},
+                                           Offset = {$product['Offset']}
                                         WHERE  Id = {$product['Id']}");
 
 
