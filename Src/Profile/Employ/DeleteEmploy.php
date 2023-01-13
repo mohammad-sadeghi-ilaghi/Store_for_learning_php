@@ -1,9 +1,13 @@
 <?php
 
 include("../../Base.php");
-
-$EmployId = $_GET['EmployId'];
-$query = "DELETE FROM EMPLOY WHERE Id = {$EmployId}";
-$result = $conn->query($query);
-echo $result;
+try{
+    $EmployId = $_GET['EmployId'];
+    $query = "DELETE FROM EMPLOY WHERE Id = {$EmployId}";
+    $result = $conn->query($query);
+    echo json_encode(new Result($result, true));
+}
+catch(Exception $e){
+    echo json_encode(new Result($e->getMessage(), false));
+}
 ?>

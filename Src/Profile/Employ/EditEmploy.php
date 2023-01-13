@@ -1,5 +1,6 @@
 <?php
 
+
 include("../../Base.php");
 
 $Employ = $_POST['Employ'];
@@ -7,15 +8,20 @@ if($Employ['Name'] == null || $Employ['DateOfBirthDay'] == null
                            || $Employ['DateOfRecruitment'] == null 
                            || $Employ['Salary'] == null 
                            || $Employ['Id'] == null ){
-    echo "Not found";
+    echo json_encode(new Result("Not found", false));
 }
 else{
-    $query = "UPDATE Employ SET Name = {$Employ['Name']},
+    try{
+        $query = "UPDATE Employ SET Name = {$Employ['Name']},
                                 DateOfBirthDay = {$Employ['DateOfBirthDay']},
                                 DateOfRecruitment = {$Employ['DateOfRecruitment']},
                                 Salary = {$Employ['Salary']}
                                 WHERE Id = {$Employ['Id']}";
     $result = $conn->query($query);
-    echo $result;   
+    echo json_encode(new Result($result, true));   
+    }
+    catch(Exception $e){
+        echo json_encode(new Result($e->getMessage(), false));
+    }
 }
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-
 include("../Base.php");
 try {
     $getProducts = json_decode($_COOKIE['Products_list']);
@@ -11,10 +10,11 @@ try {
     $conn->begin_transaction();
     addFactor($sumPrice, $OffsetSeller, $conn, $user);
     addProductBought($getProducts, $conn);
-}
+    echo json_encode(new Result(null, true));
+    ;}
 catch(Exception $e){
     $conn->rollback();
-    echo $e->getMessage();
+    echo json_encode(new Result($e->getMessage(), false));
 }
 function addProductBought($productBought, $conn)
 {

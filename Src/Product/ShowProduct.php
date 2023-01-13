@@ -3,6 +3,6 @@ include("../Base.php");
 
 $ProductId = $_GET("ProductId");
 $result = $conn->query("SELECT * FROM Product WHERE Id = {$ProductId}");
-echo json_encode($result);
+echo json_encode(new Result($result, true));
 
 ?>

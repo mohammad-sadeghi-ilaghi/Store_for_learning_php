@@ -3,12 +3,12 @@ include("../Base.php");
 
 
 
-
 if($_COOKIE["Authorization"])
 {
-    echo $_COOKIE["Authorization"];
+    echo json_encode(new Result($_COOKIE["Authorization"], true));
 }
 else{
-    echo false;
+    echo json_encode(new Result(false, true));
+
 }
 ?>
