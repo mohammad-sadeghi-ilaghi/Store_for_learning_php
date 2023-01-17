@@ -11,7 +11,7 @@ try {
     addFactor($sumPrice, $OffsetSeller, $conn, $user);
     addProductBought($getProducts, $conn);
     echo json_encode(new Result(null, true));
-    ;}
+}
 catch(Exception $e){
     $conn->rollback();
     echo json_encode(new Result($e->getMessage(), false));
